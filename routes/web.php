@@ -15,3 +15,4 @@ Route::get('/', function () {
     return view('welcome');
 });
 Route::get('print','TestController@Test')->name('print');
+Route::get('dashboard','TestController@getEntry')->name('entry');
