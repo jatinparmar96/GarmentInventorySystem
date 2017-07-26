@@ -15,11 +15,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 Route::get('print','TestController@Test')->name('print');
-Route::get('ProductEntry','PageController@getProductEntry')->name('entry');
-Route::get('Dashboard','PageController@getDashboard')->name('dashboard');
-Route::get('Billing','PageController@getBilling')->name('billing');
-Route::get('History','PageController@getHistory')->name('history');
-Route::get('/id={id}',function($id){
-    $x = $id;
-    return $x;
-});
+Route::get('ProductEntry','ProductEntryController@getProductEntry')->name('entry');
+Route::get('Dashboard','DashboardController@getDashboard')->name('dashboard');
+Route::get('Billing','BillingController@getBilling')->name('billing');
+Route::get('History','HistoryController@getHistory')->name('history');
