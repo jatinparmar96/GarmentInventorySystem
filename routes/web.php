@@ -15,3 +15,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 Route::get('print','TestController@Test')->name('print');
+Route::get('ProductEntry','ProductEntryController@getProductEntry')->name('entry');
+Route::get('Dashboard','DashboardController@getDashboard')->name('dashboard');
+Route::get('Billing','BillingController@getBilling')->name('billing');
+Route::get('History','HistoryController@getHistory')->name('history');
