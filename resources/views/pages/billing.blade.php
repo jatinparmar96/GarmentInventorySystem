@@ -13,6 +13,10 @@
                 </p>
                 <div class="form-group">
                     <div class="m-t-sm" id="TextBoxContainer">
+                        <div style="width: 0 ; overflow: hidden">
+                            <input type="text" id="barcodescan">
+                        </div>
+
                         <!--<select data-placeholder="Choose a Country..." class="chosen-select" style="width: 300px;" tabindex="2">-->
                         <!--<option value="">Select</option>-->
                         <!--<option value="United States">United States</option>-->
@@ -33,18 +37,29 @@
 
 @section('js')
     <script type="text/javascript">
+        var inp = document.getElementById('barcodescan');
+        $(document).on('load',$('#barcodescan').focus());
+        $(document).on('click',function (e) {
+            $('#barcodescan').focus();
+        });
         $(function () {
             $(document).on("keypress",function(e){
                 if(e.keyCode == 13){
 
-                    var div = $("<div/>");
-                    div.html(GetDynamicTextBox(""));
-                    $("#TextBoxContainer").append(div);
-                    $('.chosen-select').chosen({width: "40%"});
-                    $('.text-primary').focus();
+                    var x = $('#barcodescan').val();
+                    $.ajax({
+                        url: 'id='+x,
+                        success: function (result) {
+                            var div = $("<div />");
+                            div.html(GetDynamicTextBox(result));
+                            $("#TextBoxContainer").append(div);
+                        }
+                    })
+                    $('#barcodescan').val('');
                 }
 
             });
+
             $("#btnAdd").on("click", function () {
                 var div = $("<div />");
                 div.html(GetDynamicTextBox(""));
@@ -64,11 +79,7 @@
             });
         });
         function GetDynamicTextBox(value) {
-            return '<select data-placeholder="Choose a Country..." class="chosen-select text-primary" name="DynamicTextBox" style="width: 300px;" value = "' + value + '"  tabindex="2">'+
-                    '<option value="">Select</option>'+
-                    '<option value="United States">United States</option>'+
-                    '<option value="United Kingdom">United Kingdom</option>'+
-                    '</select> &nbsp;'+'<input type="text" style="width: 10%" placeholder="Qty">&nbsp;'+'<input type="text" placeholder="Price" style="width: 7%" >&nbsp;'+'<button type="button" class="btn btn-danger btn-xs remove">Remove</button>'+'<hr class="hr-line-dashed">'
+            return '<input type="text" value='+value+'>'+'<button type="button" class="btn btn-danger btn-xs remove">Remove</button>'+'<hr class="hr-line-dashed">'
 
         }
     </script>

@@ -11,9 +11,9 @@ class TestController extends Controller
       //  dd($request['barcodeValue']);
         return view('test',['number'=>$request['number'],'value'=>$request['barcodeValue']]);
     }
-    public function getEntry(Request $request)
+    public static function getEntry()
     {
         $UID = rand(100,999).time();
-        return view('pages.entry',compact('UID'));
+        return $UID;
     }
 }

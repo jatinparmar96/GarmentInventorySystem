@@ -11,22 +11,22 @@
         <ul class="nav navbar-nav">
 
             <li>
-                <a href="{{ url('/dashboard') }}"> <b style="color: #000000">Dashboard</b>
+                <a href="{{route('dashboard')}}"> <b style="color: #000000">Dashboard</b>
 
                 </a>
             </li>
             <li>
-                <a href="{{url('/billing')}}"> <b style="color: #000000">Billing</b>
+                <a href="{{route('billing')}}"> <b style="color: #000000">Billing</b>
 
                 </a>
             </li>
             <li>
-                <a href="{{url('/entry')}}"><b style="color: #000000">Product Entry</b>
+                <a href="{{route('entry')}}"><b style="color: #000000">Product Entry</b>
 
                 </a>
             </li>
             <li>
-                <a href="{{url('/history')}}"><b style="color: #000000">History</b>
+                <a href="{{route('history')}}"><b style="color: #000000">History</b>
 
                 </a>
             </li>
